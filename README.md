@@ -8,9 +8,12 @@
 
 ## 环境依赖
 
-- Python 2.x
+- python 2.x
 - scp
 - sshpass
+
+> 因为 sshpass 的依赖，需要首先用 ssh 建立过服务期间连接，也就是 `~/.ssh/known_hosts` 中已有该主机连接的信息。
+> 之所以使用 sshpass + scp 的方式，而没有采用 Python 的 ssh 库，主要是考虑了部署的方便性。
 
 ## 用法
 
@@ -18,9 +21,9 @@
 1. 安装依赖内容
 2. 建立工作目录，例如 `mkdir /root/jumper`
 3. 填写主机信息文件 `host.json`
-	- 主机 ID
-	- 其中 path 代表的是各个主机中在步骤 1 建立的工作目录
-	- upstream 代表该主机的上级跳板/堡垒机的主机 ID
+  - 主机 ID
+  - 其中 path 代表的是各个主机中在步骤 1 建立的工作目录
+  - upstream 代表该主机的上级跳板/堡垒机的主机 ID
 4. 在各个主机中以 `jumper.py [machin id] [working dir]` 形式运行该脚本
 
 ### 传输文件
@@ -115,3 +118,4 @@
 }
 
 ~~~
+
